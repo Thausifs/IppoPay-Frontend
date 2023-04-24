@@ -53,7 +53,13 @@ function Register() {
     SetUserCheckPass(e.target.value)
   }
  
-
+   //This function takes the password as a argument and validate it based on following conditions 
+  // 1.	It has at least 6 characters and at most 20 characters 
+   // 2.	It contains at least one lowercase letter, at least one uppercase letter, and at least one digit
+   //3.	It does not contain three repeating characters in a row 
+   
+   // Alert text is shown based on the password strength calculated.
+ 
   const AlertText = (e) => {
 
     let Password = e.target.value;
@@ -91,9 +97,9 @@ function Register() {
 
 
   }
-    // else if ()
+    
   
-
+  // This function validates the input datas and send it to the backend.
   async function Registerdata() {
     if (RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(user.email) === false) {
      return  alert("Email is not valid  ")
@@ -124,19 +130,9 @@ function Register() {
       }   
      );
 
-    
-    // if (Password.length < 6) {
-    //   ("password length should be aleast graeter than 6 ");
-    //   toast.error(err.response?.data?.data?.message ?? err, {
-    //       autoClose: 2000,
-    //       transition: Slide,
-    //     });
-    // } else if (Password.length < 20) {
-    //    console.log("password length less than 4 ");
-    // }
-    // console.log("we are out");
   }
   
+  //This function calculates the strength of the password 
   const CheckPassword = () => {
    document.getElementById("alertpara").style.color="Red"
     if (UserCheckPass.length < 6) {
@@ -208,16 +204,7 @@ function Register() {
             value={user.Username}
           ></InputField>
           <p id="alertpara"></p>
-          {
-          // <InputField
-          //   icon={Passwordicon}
-          //   placeholder="Password"
-          //   type="isRevealPwd ? "text" : "password""
-           
-          //   callback={(e)=>SetUserPass(e)}
-          //   value={user.password}
-          // ></InputField>
-          }
+        
         <div className="input-container">
         <span className="icon">
           <img className="inpfieldicon" src={Passwordicon} alt=""></img>
@@ -261,16 +248,7 @@ function Register() {
             </div>
             
           <p id="alertpara"></p>
-          {
-          // <InputField
-          //   icon={Passwordicon}
-          //   placeholder="Password"
-          //   type="isRevealPwd ? "text" : "password""
-           
-          //   callback={(e)=>SetUserPass(e)}
-          //   value={user.password}
-          // ></InputField>
-          }
+        
         <div className="input-container">
         <span className="icon">
           <img className="inpfieldicon" src={Passwordicon} alt=""></img>
@@ -281,7 +259,7 @@ function Register() {
           placeholder="Password"
           name="usrnm"
           onChange={(e) => SetUserCheckPassfn(e)}
-          // value={user.password}
+   
             />
             <img className="imgpasswordhide" alt=""
           title={isRevealPwd ? "Hide password" : "Show password"}
